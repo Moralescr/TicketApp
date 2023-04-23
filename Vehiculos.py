@@ -35,12 +35,12 @@ class Vehiculos:
     # Consultar un vehiculo
     def consultarVehiculo(self, numeroPlaca=""):
         if numeroPlaca == "":
-            numeroPlaca = input("Ingrese el número de placa a buscar: ")
+            numeroPlaca = input("Ingrese el número de placa del vehículo a buscar: ")
         for vehiculo in self.listaVehiculos:
             if vehiculo['numeroPlaca'] == numeroPlaca:
                 print(
                     f"El vehiculo es: Placa: {vehiculo['numeroPlaca']}, Marca: {vehiculo['marca']}, Estilo: {vehiculo['estilo']}, Modelo: {vehiculo['modelo']}, Capacidad: {vehiculo['capacidad']}")
-                return int(vehiculo['capacidad'])
+                return vehiculo['capacidad']
         print("Vehículo no encontrado")
 
     # Actualizar un vehículo
