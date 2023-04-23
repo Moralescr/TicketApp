@@ -46,6 +46,7 @@ class Viajes:
 
     # Consultar un viaje
     def consultarViaje(self):
+        viajeExiste = False
         idViaje = int(input("Ingrese el ID del viaje a buscar: "))
         for viaje in self.listaViajes:
             if viaje['idViaje'] == idViaje:
@@ -53,8 +54,10 @@ class Viajes:
                     f"Datos del viaje, ID: {viaje ['idViaje']}, Placa: {viaje ['numeroPlaca']}, Destino: {viaje['destino']}, Capacidad Total: {viaje['capacidadPasajeros']}, Precio: {viaje['precioTiquete']}")
                 print(
                     f"Tiquetes disponibles: {viaje ['tiquetesDisponibles']}, Tiquetes vendidos: {viaje ['tiquetesVendidos']}")
-                return
-        print(f"No existe un viaje con el ID: { idViaje } ")
+                viajeExiste = True
+        if viajeExiste == False:
+            print(f"No existe un viaje con el ID: { idViaje } ")
+        return viajeExiste
 
     # Actualizar un viaje
     def editarViaje(self,):
@@ -100,3 +103,33 @@ class Viajes:
                 f"ID Viaje: {viaje ['idViaje']}, Placa: {viaje ['numeroPlaca']}, Destino: {viaje ['destino']}, Precio: {viaje ['precioTiquete']}")
             print("----------------------------")
         print("------------- UL ----------------")
+
+    # Validar disponibilidad de un viaje
+    def validaDisponibilidad(self, idViaje):
+        cantidadDisponibles = 0
+        for viaje in self.listaViajes:
+            if viaje['idViaje'] == idViaje:
+                cantidadDisponibles = viaje['tiquetesDisponibles']
+        return cantidadDisponibles
+
+    # Validar precio venta de un viaje
+    def validaPrecioVenta(self, idViaje):
+        precioVenta = 0
+        for viaje in self.listaViajes:
+            if viaje['idViaje'] == idViaje:
+                precioVenta = viaje['precioTiquete']
+        return precioVenta
+
+    # Control de tiquetes vendidos o anulados
+    def sumaORestaTotalBoletos(self, idViaje, cantidad, opcToExec):
+        for viaje in self.listaViajes:
+            if viaje['idViaje'] == idViaje:
+                # Si es 1, significa que se ha comprado un boleto por lo tanto se resta del disponible y se suma a los vendidos
+                if opcToExec == 1:
+                    viaje['tiquetesDisponibles'] -= cantidad
+                    viaje['tiquetesVendidos'] += cantidad
+                # Si es otro valor, significa que se ha anulado un boleto por lo tanto se suma al disponible y se resta a los vendidos
+                else:
+                    viaje['tiquetesDisponibles'] += cantidad
+                    viaje['tiquetesVendidos'] -= cantidad
+                return
