@@ -94,17 +94,8 @@ class Viajes:
                 print(
                     f"ID Viaje: {viaje ['idViaje']}, Placa: {viaje ['numeroPlaca']}, Destino: {viaje ['destino']}, Precio: {viaje ['precioTiquete']}")
 
-    # Informe resumen
-    def informeViajes(self,):
-        print("********* INFORME RESUMEN DE VIAJES **********")
-        print("Cantidad de viajes: ", len(self.listaViajes))
-        for viaje in self.listaViajes:
-            print(
-                f"ID Viaje: {viaje ['idViaje']}, Placa: {viaje ['numeroPlaca']}, Destino: {viaje ['destino']}, Precio: {viaje ['precioTiquete']}")
-            print("----------------------------")
-        print("------------- UL ----------------")
-
     # Validar disponibilidad de un viaje
+
     def validaDisponibilidad(self, idViaje):
         cantidadDisponibles = 0
         for viaje in self.listaViajes:
@@ -133,3 +124,13 @@ class Viajes:
                     viaje['tiquetesDisponibles'] += cantidad
                     viaje['tiquetesVendidos'] -= cantidad
                 return
+
+    # Informe resumen
+    def informeViajes(self,):
+        print("********* INFORME RESUMEN DE VIAJES **********")
+        print("Cantidad de viajes: ", len(self.listaViajes))
+        for viaje in self.listaViajes:
+            print(
+                f"ID Viaje: {viaje ['idViaje']}, Placa: {viaje ['numeroPlaca']}, Destino: {viaje ['destino']}, Precio: {viaje ['precioTiquete']}")
+            print("----------------------------")
+        print("------------- UL ----------------")
