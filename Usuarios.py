@@ -64,7 +64,7 @@ class Usuarios:
                     "Rol de usuario es Administrador (N/S): ")
                 usuario['clave'] = nuevaClave
                 usuario['isAdmin'] = usuarioIsAdmin
-                print("La clave se ha cambiado exitosamente.")
+                print("Los datos han sido modificados exitosamente.")
                 return
         print("Error: El usuario no existe en nuestras bases de datos.")
 

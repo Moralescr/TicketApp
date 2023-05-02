@@ -23,9 +23,8 @@ def submenu(opciones):
             print(opt['opc'])
         eleccion = int(input("Elija una opción: "))
         if eleccion <= len(opciones):
-            # posicion en la lista. data={"opc":"opcion elegida","fnc":"la opcion a ejecutar)}
             data = opciones[eleccion - 1]
-            exec(data['fnc'])
+            exec(data['fnc'])  # Función a ejecutar.
         else:
             print('Opción no válida, intente de nuevo')
 
@@ -52,8 +51,8 @@ while userValid == True:
     isTrue = login(usuario.listaUsuarios, userName, password)
     if isTrue == True:
         isAdmin = usuario.validarRolUsuario(userName, password)
-        run = True
-        while run == True:
+        runApp = True
+        while runApp == True:
             print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
             print('>                                               >')
             print('>     Bienvenido Auto Transportes el Roble      >')
@@ -115,9 +114,9 @@ while userValid == True:
                             {"opc": "4. Salir", "fnc": ""}]
                 submenu(opciones)
             elif (opcion == 5 and isAdmin == True) or (opcion == 2):
-                run = False
+                runApp = False
             elif (opcion == 6 and isAdmin == True) or (opcion == 3):
-                run = False
+                runApp = False
                 userValid = False
             else:
                 print("Opción inválida, intente de nuevo")

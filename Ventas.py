@@ -5,7 +5,6 @@ import Viajes as viajes
 
 
 class Ventas:
-
     # Método constructor de la clase
     def __init__(self,):
         self.idViaje = 0
@@ -60,7 +59,7 @@ class Ventas:
                 print("Monto total a pagar: ", totalVentaBrutaIVA)
                 print("Muchas gracias por su compra!")
         else:
-            print("Lo sentimos, NO hay suficientes tiquetes disponibles para su compra")
+            print("Lo sentimos, NO hay suficientes tiquetes disponibles para su compra!")
 
     # Anular venta de tiquete
     def anularVentaTiquete(self, idTiqueteAnular=0):
@@ -89,9 +88,11 @@ class Ventas:
         for tiquete in self.listaTiquetesVendidos:
             if tiquete['idViaje'] == idViaje and tiquete['idFactura'] == idFactura:
                 viaje.mostrarDatosViaje(idViaje)
-                print(
-                    f"Total tiquetes: {tiquete['asientos']}, Precio sin impuestos: {tiquete['totalVentaBruta']}, Total a pagar: {tiquete['totalVentaBrutaIVA']}")
-                print("Impuestos:", tiquete['totalIVA'])
+                # Datos de la factura
+                print("Total a pagar: ", tiquete['totalVentaBrutaIVA'])
+                print("Precio sin impuestos: ", tiquete['totalVentaBruta'])
+                print("Total tiquetes: ", tiquete['asientos'])
+                print("Impuestos: ", tiquete['totalIVA'])
                 print('\n')
                 anular = input("Quisieras anular esta venta? (S/N): ")
                 if anular == "S":
