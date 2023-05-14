@@ -1,6 +1,6 @@
 import Vehiculos as vehiculos
 
-# Clase Ventas
+# Clase Viajes
 
 
 class Viajes:
